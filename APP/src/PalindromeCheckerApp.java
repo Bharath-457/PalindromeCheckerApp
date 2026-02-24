@@ -1,26 +1,43 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Palindrome Checker App (UC3) ===");
+        System.out.println("=== Palindrome Checker App (UC6 - Queue + Stack) ===");
 
         Scanner scanner = new Scanner(System.in);
 
-        // Step 1: Get input from user
+        // Step 1: Get input
         System.out.print("Enter a string: ");
-        String original = scanner.nextLine();
+        String input = scanner.nextLine();
 
-        // Step 2: Reverse the string using loop
-        String reversed = "";
+        // Step 2: Create Queue and Stack
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
 
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed += original.charAt(i);
+        // Step 3: Insert characters
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+            queue.add(ch);   // FIFO
+            stack.push(ch);  // LIFO
         }
 
-        // Step 3: Compare original and reversed
-        if (original.equals(reversed)) {
+        // Step 4: Compare dequeue and pop
+        boolean isPalindrome = true;
+
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Step 5: Print result
+        if (isPalindrome) {
             System.out.println("Result: It is a Palindrome.");
         } else {
             System.out.println("Result: It is NOT a Palindrome.");
