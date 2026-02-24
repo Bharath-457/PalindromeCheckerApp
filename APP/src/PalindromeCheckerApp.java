@@ -35,16 +35,3 @@ public class PalindromeCheckerApp {
                 break;
             }
         }
-
-        // Step 5: Print result
-        if (isPalindrome) {
-            System.out.println("Result: It is a Palindrome.");
-        } else {
-            System.out.println("Result: It is NOT a Palindrome.");
-        }
-
-        scanner.close();
-        System.out.println("Program Ended.");
-    }
-}
-
